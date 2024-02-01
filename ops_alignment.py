@@ -17,19 +17,19 @@ class Operator_BlenRig_Fix_Misaligned_Bones(bpy.types.Operator):
         else:
             return (bpy.context.object.type=='ARMATURE' and context.mode=='EDIT_ARMATURE')
 
-    active_layers = []
+    active_collections = []
 
     # Save current layers then enable all
     def all_layers(self, context):
         arm = bpy.context.active_object
         arm_data = arm.data
-        for i in range(len(arm_data.layers)):
-            layers_status = arm_data.layers[i]
-            if layers_status.real == 1:
-                self.active_layers.append(i)
+        for i in range(len(arm_data.collections)):
+            if arm_data.collections[i].is_visible == True:
+                self.active_collections.append(i)
 
         #Turn on all layers
-        arm_data.layers = [(x in [x]) for x in range(32)]
+        for col in arm_data.collections:
+            col.is_visible = True
 
     #Mirror Armature from L to R if X-Mirror is enabled
     def blenrig_update_mirrored(self, context):
@@ -261,7 +261,8 @@ class Operator_BlenRig_Fix_Misaligned_Bones(bpy.types.Operator):
         arm = bpy.context.active_object
         arm_data = arm.data
 
-        arm_data.layers = [(x in self.active_layers) for x in range(32)]
+        for col in arm_data.collections: 
+            col.is_visible = x in self.active_collections
 
     def execute(self, context):
         self.all_layers(context)
@@ -286,19 +287,19 @@ class Operator_BlenRig_Auto_Bone_Roll(bpy.types.Operator):
         else:
             return (bpy.context.object.type=='ARMATURE' and context.mode=='EDIT_ARMATURE')
 
-    active_layers = []
+    active_collections = []
 
     # Save current layers then enable all
     def all_layers(self, context):
         arm = bpy.context.active_object
         arm_data = arm.data
-        for i in range(len(arm_data.layers)):
-            layers_status = arm_data.layers[i]
-            if layers_status.real == 1:
-                self.active_layers.append(i)
+        for i in range(len(arm_data.collections)):
+            if arm_data.collections[i].is_visible == True:
+                self.active_collections.append(i)
 
         #Turn on all layers
-        arm_data.layers = [(x in [x]) for x in range(32)]
+        for collection in arm_data.collections:
+            collection.is_visible = True
 
     #Mirror Armature from L to R if X-Mirror is enabled
     def blenrig_update_mirrored(self, context):
@@ -748,7 +749,8 @@ class Operator_BlenRig_Auto_Bone_Roll(bpy.types.Operator):
     def reset_layers(self, context):
         arm = bpy.context.active_object
         arm_data = arm.data
-        arm_data.layers = [(x in self.active_layers) for x in range(32)]
+        for col in arm_data.collections: 
+            col.is_visible = x in self.active_collections
 
     #Execute functions
     def execute(self, context):
@@ -776,19 +778,19 @@ class Operator_BlenRig_Custom_Bone_Roll(bpy.types.Operator):
         else:
             return (bpy.context.object.type=='ARMATURE' and context.mode=='EDIT_ARMATURE')
 
-    active_layers = []
+    active_collections = []
 
     # Save current layers then enable all
     def all_layers(self, context):
         arm = bpy.context.active_object
         arm_data = arm.data
-        for i in range(len(arm_data.layers)):
-            layers_status = arm_data.layers[i]
-            if layers_status.real == 1:
-                self.active_layers.append(i)
+        for i in range(len(arm_data.collections)):
+            if arm_data.collections[i].is_visible == True:
+                self.active_collections.append(i)
 
         #Turn on all layers
-        arm_data.layers = [(x in [x]) for x in range(32)]
+        for collection in arm_data.collections:
+            collection.is_visible = True
 
     #Mirror Armature from L to R if X-Mirror is enabled
     def blenrig_update_mirrored(self, context):
@@ -1047,7 +1049,8 @@ class Operator_BlenRig_Custom_Bone_Roll(bpy.types.Operator):
     def reset_layers(self, context):
         arm = bpy.context.active_object
         arm_data = arm.data
-        arm_data.layers = [(x in self.active_layers) for x in range(32)]
+        for col in arm_data.collections: 
+            col.is_visible = x in self.active_collections
 
     #Execute functions
     def execute(self, context):

@@ -306,14 +306,14 @@ listaDeEstados = []
 # Auto mode for reproportion now is in ARMATURE_OT_blenrig_6_gui in __init__.py for gui_rig_bake button.
 
 mode = []
-layers = []
+collections = []
 
 
 def reproportion_toggle(self, context):
 
     if context:
         mode.append(context.active_object.mode)
-        layers.append(context.active_object.data.layers[:])
+        collections.append(context.active_object.data.collections[:])
 
         if context.active_object.data.reproportion:
             bpy.ops.object.mode_set(mode='POSE')
@@ -321,13 +321,17 @@ def reproportion_toggle(self, context):
         else:
             # if len(mode) > 1:
             #     bpy.ops.object.mode_set(mode=mode[-2])
-            if len(layers) > 1:
-                context.active_object.data.layers = layers[-2]
+            # if len(collections) > 1:
+            #     context.active_object.data.collections = collections[-2]
+			# TODO, not sure what is expexted
+            for col in context.active_object.data.collections:
+                col.is_visible = False
+            context.active_object.data.collections[-1].is_visible = True
 
         if len(mode) > 1:
             del mode[0]
-        if len(layers) > 1:
-            del layers[0]
+        if len(collections) > 1:
+            del collections[0]
 
         if not context.screen and context.screen.is_animation_playing == True and not context.active_object:
             return False
@@ -339,17 +343,17 @@ def reproportion_toggle(self, context):
                     p_bones = context.active_object.pose.bones
                     if prop:
                         contador = 0
-                        for layer in context.active_object.data.layers:
-                            listaDeEstados.insert(contador, layer)
+                        for collection in context.active_object.data.collections:
+                            listaDeEstados.insert(contador, collection)
                             contador += 1
 
                         contador = 0
-                        for layer in context.active_object.data.layers:
-                            if layer:
-                                context.active_object.data.layers[contador] = not context.active_object.data.layers[contador]
+                        for collection in context.active_object.data.collections:
+                            if collection:
+                                context.active_object.data.collections[contador].is_visible = not context.active_object.data.collections[contador].is_visible
 
                             contador += 1
-                            context.active_object.data.layers[31] = True
+                            context.active_object.data.collections[31].is_visible = True
 
                         for b in p_bones:
                             for C in b.constraints:
@@ -360,8 +364,8 @@ def reproportion_toggle(self, context):
                     else:
                         contador = 0
                         try:
-                            for layer in context.active_object.data.layers:
-                                context.active_object.data.layers[contador] = listaDeEstados[contador]
+                            for collection in context.active_object.data.collections:
+                                context.active_object.data.collections[contador] = listaDeEstados[contador]
                                 contador += 1
 
                             for b in p_bones:

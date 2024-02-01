@@ -178,7 +178,7 @@ def mdef_end_generic(context):
     #Turn Layers on
     off_layers = [24, 25, 26, 27, 28, 29, 30, 31]
     for l in off_layers:
-        guide_props.arm_obj.data.layers[l] = False
+        guide_props.arm_obj.data.collections[l].is_visible = False
 
     #Unlink Temp Collection
     blenrig_temp_unlink()

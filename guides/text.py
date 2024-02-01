@@ -10,7 +10,8 @@ from blf import (
 def Draw_Text(_x, _y, _text, _size, _dpi, _id = 0, _r = 1, _g = 1, _b = 1, _a = 1):
     text_color(_id, _r, _g, _b, _a)
     text_position(_id, _x, _y, 0)
-    text_size(_id, _size, _dpi)
+	#TODO manage char size without dpi parameter
+    text_size(_id, _size)
     text_draw(_id, _text)
 
 def Draw_Text_Wrap(_x, _y, _w, _text, _size, _dpi, _id = 0, _r = 1, _g = 1, _b = 1, _a = 1):
@@ -20,5 +21,6 @@ def Draw_Text_Wrap(_x, _y, _w, _text, _size, _dpi, _id = 0, _r = 1, _g = 1, _b =
     text_disable(_id, WORD_WRAP)
 
 def SetSizeGetDim(_id, _size, _dpi, _txt):
-    text_size(_id, _size, _dpi)
+	#TODO manage char size without dpi parameter
+    text_size(_id, _size)
     return text_dim(_id, _txt)

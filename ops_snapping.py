@@ -9391,7 +9391,7 @@ class Operator_Torso_Snap_IK_FK(bpy.types.Operator):
             if (b.name in check_bones):
                 b.bone.hide = False
 
-        arm_data.layers[30] = True
+        arm_data.collections[30].is_visible = True
         sel_act_bones('spine_1_fk', 'spine_1_ik', 'loc_rot')
         sel_act_bones('spine_2_fk', 'spine_2_ik', 'loc_rot')
         sel_act_bones('spine_3_fk', 'spine_3_ik', 'loc_rot')
@@ -9403,7 +9403,7 @@ class Operator_Torso_Snap_IK_FK(bpy.types.Operator):
             select_bones = ['spine_1_fk', 'spine_2_fk', 'spine_3_fk', 'torso_fk_ctrl']
             if (b.name in select_bones):
                 b.bone.select = 1
-        arm_data.layers[30] = False
+        arm_data.collections[30].is_visible = False
 
         return {"FINISHED"}
 
@@ -9446,7 +9446,7 @@ class Operator_Torso_Snap_FK_IK(bpy.types.Operator):
             if (b.name in check_bones):
                 b.bone.hide = False
 
-        arm_data.layers[30] = True
+        arm_data.collections[30].is_visible = True
         sel_act_bones('torso_ik_ctrl', 'snap_torso_fk_ctrl', 'loc_rot')
         sel_act_bones('spine_4_ik_ctrl', 'neck_1_fk', 'loc')
         sel_act_bones('spine_3_ik_ctrl', 'spine_3_fk', 'loc')
@@ -9462,7 +9462,7 @@ class Operator_Torso_Snap_FK_IK(bpy.types.Operator):
             select_bones = ['spine_1_ik_ctrl', 'spine_2_ik_ctrl', 'spine_3_ik_ctrl', 'spine_4_ik_ctrl', 'torso_ik_ctrl']
             if (b.name in select_bones):
                 b.bone.select = 1
-        arm_data.layers[30] = False
+        arm_data.collections[30].is_visible = False
 
         return {"FINISHED"}
 
@@ -9504,7 +9504,7 @@ class Operator_Torso_Snap_INV_UP(bpy.types.Operator):
             if (b.name in check_bones):
                 b.bone.hide = False
 
-        arm_data.layers[30] = True
+        arm_data.collections[30].is_visible = True
         sel_act_bones('pelvis_ctrl', 'snap_pelvis_ctrl_inv', 'loc_rot')
         sel_act_bones('spine_1_fk', 'snap_spine_1_fk_inv', 'loc_rot')
         sel_act_bones('spine_2_fk', 'snap_spine_2_fk_inv', 'loc_rot')
@@ -9526,7 +9526,7 @@ class Operator_Torso_Snap_INV_UP(bpy.types.Operator):
             select_bones = ['pelvis_ctrl', 'spine_1_fk', 'spine_2_fk', 'spine_3_fk','spine_2_ik_ctrl', 'spine_3_ik_ctrl', 'spine_4_ik_ctrl', 'torso_ik_ctrl', 'torso_fk_ctrl']
             if (b.name in select_bones):
                 b.bone.select = 1
-        arm_data.layers[30] = False
+        arm_data.collections[30].is_visible = False
 
         return {"FINISHED"}
 
@@ -9570,7 +9570,7 @@ class Operator_Torso_Snap_UP_INV(bpy.types.Operator):
             if (b.name in check_bones):
                 b.bone.hide = False
 
-        arm_data.layers[30] = True
+        arm_data.collections[30].is_visible = True
         sel_act_bones('spine_3_inv_ctrl', 'snap_torso_ctrl_inv_loc', 'loc_rot')
         sel_act_bones('spine_3_inv', 'spine_3_fk', 'loc_rot')
         sel_act_bones('spine_2_inv', 'snap_spine_2_inv_fk', 'loc_rot')
@@ -9584,7 +9584,7 @@ class Operator_Torso_Snap_UP_INV(bpy.types.Operator):
             select_bones = ['pelvis_inv', 'spine_1_inv', 'spine_2_inv', 'spine_3_inv', 'torso_inv_ctrl']
             if (b.name in select_bones):
                 b.bone.select = 1
-        arm_data.layers[30] = False
+        arm_data.collections[30].is_visible = False
 
         return {"FINISHED"}
 
@@ -9629,7 +9629,7 @@ class Operator_Head_Snap_IK_FK(bpy.types.Operator):
             if (b.name in check_bones):
                 b.bone.hide = False
 
-        arm_data.layers[30] = True
+        arm_data.collections[30].is_visible = True
         sel_act_bones('neck_1_fk', 'neck_1_ik', 'loc_rot')
         sel_act_bones('neck_2_fk', 'neck_2_ik', 'loc_rot')
         sel_act_bones('neck_3_fk', 'neck_3_ik', 'loc_rot')
@@ -9641,7 +9641,7 @@ class Operator_Head_Snap_IK_FK(bpy.types.Operator):
             select_bones = ['neck_1_fk', 'neck_2_fk', 'neck_3_fk', 'neck_fk_ctrl']
             if (b.name in select_bones):
                 b.bone.select = 1
-        arm_data.layers[30] = False
+        arm_data.collections[30].is_visible = False
 
         return {"FINISHED"}
 
@@ -9683,7 +9683,7 @@ class Operator_Head_Snap_FK_IK(bpy.types.Operator):
             if (b.name in check_bones):
                 b.bone.hide = False
 
-        arm_data.layers[30] = True
+        arm_data.collections[30].is_visible = True
         sel_act_bones('neck_ik_ctrl', 'snap_neck_fk_pivot', 'loc_rot')
         sel_act_bones('head_ik_ctrl', 'head_fk', 'loc')
         sel_act_bones('neck_3_ik_ctrl', 'neck_3_fk', 'loc_rot')
@@ -9696,7 +9696,7 @@ class Operator_Head_Snap_FK_IK(bpy.types.Operator):
             select_bones = ['neck_ik_ctrl', 'neck_3_ik_ctrl', 'neck_2_ik_ctrl']
             if (b.name in select_bones):
                 b.bone.select = 1
-        arm_data.layers[30] = False
+        arm_data.collections[30].is_visible = False
 
         return {"FINISHED"}
 
@@ -9744,7 +9744,7 @@ class Operator_Arm_L_Snap_IK_FK(bpy.types.Operator):
                 if (b.name in check_bones):
                     b.bone.hide = False
 
-            arm_data.layers[30] = True
+            arm_data.collections[30].is_visible = True
             sel_act_bones('arm_fk_L', 'arm_ik_L', 'rot')
             sel_act_bones('forearm_fk_L', 'forearm_ik_L', 'rot')
             for b in p_bones:
@@ -9758,7 +9758,7 @@ class Operator_Arm_L_Snap_IK_FK(bpy.types.Operator):
                 select_bones = ['arm_fk_L', 'forearm_fk_L', 'hand_fk_L', 'hand_ik_ctrl_L']
                 if (b.name in select_bones):
                     b.bone.select = 1
-            arm_data.layers[30] = False
+            arm_data.collections[30].is_visible = False
 
         #Quadruped
         if arm_data['rig_type'] == 'Quadruped':
@@ -9775,7 +9775,7 @@ class Operator_Arm_L_Snap_IK_FK(bpy.types.Operator):
                 if (b.name in check_bones):
                     b.bone.hide = False
 
-            arm_data.layers[30] = True
+            arm_data.collections[30].is_visible = True
             sel_act_bones('arm_fk_L', 'arm_ik_L', 'rot')
             sel_act_bones('forearm_fk_L', 'forearm_ik_L', 'rot')
             sel_act_bones('carpal_fk_L', 'carpal_ik_L', 'rot')
@@ -9788,7 +9788,7 @@ class Operator_Arm_L_Snap_IK_FK(bpy.types.Operator):
                 select_bones = ['arm_fk_L', 'forearm_fk_L', 'hand_fk_L', 'hand_ik_ctrl_L', 'carpal_fk_L', 'fing_1_fk_L', 'fing_2_fk_L']
                 if (b.name in select_bones):
                     b.bone.select = 1
-            arm_data.layers[30] = False
+            arm_data.collections[30].is_visible = False
 
         return {"FINISHED"}
 
@@ -9833,7 +9833,7 @@ class Operator_Arm_L_Snap_FK_IK(bpy.types.Operator):
                 if (b.name in check_bones):
                     b.bone.hide = False
 
-            arm_data.layers[30] = True
+            arm_data.collections[30].is_visible = True
             p_bones['hand_ik_pivot_point_L'].bone.select = 1
             bpy.ops.pose.rot_clear()
             bpy.ops.pose.loc_clear()
@@ -9851,7 +9851,7 @@ class Operator_Arm_L_Snap_FK_IK(bpy.types.Operator):
                 select_bones = ['hand_ik_ctrl_L', 'elbow_pole_L', 'hand_ik_pivot_point_L']
                 if (b.name in select_bones):
                     b.bone.select = 1
-            arm_data.layers[30] = False
+            arm_data.collections[30].is_visible = False
 
         #Quadruped
         if arm_data['rig_type'] == 'Quadruped':
@@ -9868,7 +9868,7 @@ class Operator_Arm_L_Snap_FK_IK(bpy.types.Operator):
                 if (b.name in check_bones):
                     b.bone.hide = False
 
-            arm_data.layers[30] = True
+            arm_data.collections[30].is_visible = True
             p_bones['hand_sole_pivot_point_L'].bone.select = 1
             bpy.ops.pose.rot_clear()
             bpy.ops.pose.loc_clear()
@@ -9896,7 +9896,7 @@ class Operator_Arm_L_Snap_FK_IK(bpy.types.Operator):
                 select_bones = ['hand_sole_ctrl_L', 'elbow_pole_L', 'fings_ik_ctrl_L', 'fings_ik_ctrl_mid_L', 'hand_ik_ctrl_L']
                 if (b.name in select_bones):
                     b.bone.select = 1
-            arm_data.layers[30] = False
+            arm_data.collections[30].is_visible = False
 
         return {"FINISHED"}
 
@@ -9944,7 +9944,7 @@ class Operator_Arm_R_Snap_IK_FK(bpy.types.Operator):
                 if (b.name in check_bones):
                     b.bone.hide = False
 
-            arm_data.layers[30] = True
+            arm_data.collections[30].is_visible = True
             sel_act_bones('arm_fk_R', 'arm_ik_R', 'rot')
             sel_act_bones('forearm_fk_R', 'forearm_ik_R', 'rot')
             for b in p_bones:
@@ -9958,7 +9958,7 @@ class Operator_Arm_R_Snap_IK_FK(bpy.types.Operator):
                 select_bones = ['arm_fk_R', 'forearm_fk_R', 'hand_fk_R', 'hand_ik_ctrl_R']
                 if (b.name in select_bones):
                     b.bone.select = 1
-            arm_data.layers[30] = False
+            arm_data.collections[30].is_visible = False
 
         #Quadruped
         if arm_data['rig_type'] == 'Quadruped':
@@ -9975,7 +9975,7 @@ class Operator_Arm_R_Snap_IK_FK(bpy.types.Operator):
                 if (b.name in check_bones):
                     b.bone.hide = False
 
-            arm_data.layers[30] = True
+            arm_data.collections[30].is_visible = True
             sel_act_bones('arm_fk_R', 'arm_ik_R', 'rot')
             sel_act_bones('forearm_fk_R', 'forearm_ik_R', 'rot')
             sel_act_bones('carpal_fk_R', 'carpal_ik_R', 'rot')
@@ -9988,7 +9988,7 @@ class Operator_Arm_R_Snap_IK_FK(bpy.types.Operator):
                 select_bones = ['arm_fk_R', 'forearm_fk_R', 'hand_fk_R', 'hand_ik_ctrl_R', 'carpal_fk_R', 'fing_1_fk_R', 'fing_2_fk_R']
                 if (b.name in select_bones):
                     b.bone.select = 1
-            arm_data.layers[30] = False
+            arm_data.collections[30].is_visible = False
 
         return {"FINISHED"}
 
@@ -10033,7 +10033,7 @@ class Operator_Arm_R_Snap_FK_IK(bpy.types.Operator):
                 if (b.name in check_bones):
                     b.bone.hide = False
 
-            arm_data.layers[30] = True
+            arm_data.collections[30].is_visible = True
             p_bones['hand_ik_pivot_point_R'].bone.select = 1
             bpy.ops.pose.rot_clear()
             bpy.ops.pose.loc_clear()
@@ -10051,7 +10051,7 @@ class Operator_Arm_R_Snap_FK_IK(bpy.types.Operator):
                 select_bones = ['hand_ik_ctrl_R', 'elbow_pole_R', 'hand_ik_pivot_point_R']
                 if (b.name in select_bones):
                     b.bone.select = 1
-            arm_data.layers[30] = False
+            arm_data.collections[30].is_visible = False
 
         #Quadruped
         if arm_data['rig_type'] == 'Quadruped':
@@ -10068,7 +10068,7 @@ class Operator_Arm_R_Snap_FK_IK(bpy.types.Operator):
                 if (b.name in check_bones):
                     b.bone.hide = False
 
-            arm_data.layers[30] = True
+            arm_data.collections[30].is_visible = True
             p_bones['hand_sole_pivot_point_R'].bone.select = 1
             bpy.ops.pose.rot_clear()
             bpy.ops.pose.loc_clear()
@@ -10096,7 +10096,7 @@ class Operator_Arm_R_Snap_FK_IK(bpy.types.Operator):
                 select_bones = ['hand_sole_ctrl_R', 'elbow_pole_R', 'fings_ik_ctrl_R', 'fings_ik_ctrl_mid_R', 'hand_ik_ctrl_R']
                 if (b.name in select_bones):
                     b.bone.select = 1
-            arm_data.layers[30] = False
+            arm_data.collections[30].is_visible = False
 
         return {"FINISHED"}
 
@@ -10144,7 +10144,7 @@ class Operator_Leg_L_Snap_IK_FK(bpy.types.Operator):
                 if (b.name in check_bones):
                     b.bone.hide = False
 
-            arm_data.layers[30] = True
+            arm_data.collections[30].is_visible = True
             sel_act_bones('thigh_fk_L', 'thigh_ik_L', 'rot')
             sel_act_bones('shin_fk_L', 'shin_ik_L', 'rot')
             sel_act_bones('foot_fk_L', 'foot_ik_L', 'rot')
@@ -10156,7 +10156,7 @@ class Operator_Leg_L_Snap_IK_FK(bpy.types.Operator):
                 select_bones = ['thigh_fk_L', 'shin_fk_L', 'foot_fk_L', 'toe_1_fk_L', 'toe_2_fk_L']
                 if (b.name in select_bones):
                     b.bone.select = 1
-            arm_data.layers[30] = False
+            arm_data.collections[30].is_visible = False
 
         #Quadruped
         if arm_data['rig_type'] == 'Quadruped':
@@ -10173,7 +10173,7 @@ class Operator_Leg_L_Snap_IK_FK(bpy.types.Operator):
                 if (b.name in check_bones):
                     b.bone.hide = False
 
-            arm_data.layers[30] = True
+            arm_data.collections[30].is_visible = True
             sel_act_bones('thigh_fk_L', 'thigh_ik_L', 'rot')
             sel_act_bones('shin_fk_L', 'shin_ik_L', 'rot')
             sel_act_bones('tarsal_fk_L', 'tarsal_ik_L', 'rot')
@@ -10186,7 +10186,7 @@ class Operator_Leg_L_Snap_IK_FK(bpy.types.Operator):
                 select_bones = ['thigh_fk_L', 'shin_fk_L', 'tarsal_fk_L', 'foot_fk_L', 'toe_1_fk_L', 'toe_2_fk_L']
                 if (b.name in select_bones):
                     b.bone.select = 1
-            arm_data.layers[30] = False
+            arm_data.collections[30].is_visible = False
 
         return {"FINISHED"}
 
@@ -10231,7 +10231,7 @@ class Operator_Leg_L_Snap_FK_IK(bpy.types.Operator):
                 if (b.name in check_bones):
                     b.bone.hide = False
 
-            arm_data.layers[30] = True
+            arm_data.collections[30].is_visible = True
             p_bones['sole_pivot_point_L'].bone.select = 1
             bpy.ops.pose.rot_clear()
             bpy.ops.pose.loc_clear()
@@ -10259,7 +10259,7 @@ class Operator_Leg_L_Snap_FK_IK(bpy.types.Operator):
                 select_bones = ['sole_ctrl_L', 'knee_pole_L', 'toes_ik_ctrl_L', 'toes_ik_ctrl_mid_L', 'foot_ik_ctrl_L']
                 if (b.name in select_bones):
                     b.bone.select = 1
-            arm_data.layers[30] = False
+            arm_data.collections[30].is_visible = False
 
         #Quadruped
         if arm_data['rig_type'] == 'Quadruped':
@@ -10276,7 +10276,7 @@ class Operator_Leg_L_Snap_FK_IK(bpy.types.Operator):
                 if (b.name in check_bones):
                     b.bone.hide = False
 
-            arm_data.layers[30] = True
+            arm_data.collections[30].is_visible = True
             p_bones['sole_pivot_point_L'].bone.select = 1
             bpy.ops.pose.rot_clear()
             bpy.ops.pose.loc_clear()
@@ -10305,7 +10305,7 @@ class Operator_Leg_L_Snap_FK_IK(bpy.types.Operator):
                 select_bones = ['sole_ctrl_L', 'knee_pole_L', 'toes_ik_ctrl_L', 'toes_ik_ctrl_mid_L', 'foot_ik_ctrl_L']
                 if (b.name in select_bones):
                     b.bone.select = 1
-            arm_data.layers[30] = False
+            arm_data.collections[30].is_visible = False
 
         return {"FINISHED"}
 
@@ -10353,7 +10353,7 @@ class Operator_Leg_R_Snap_IK_FK(bpy.types.Operator):
                 if (b.name in check_bones):
                     b.bone.hide = False
 
-            arm_data.layers[30] = True
+            arm_data.collections[30].is_visible = True
             sel_act_bones('thigh_fk_R', 'thigh_ik_R', 'rot')
             sel_act_bones('shin_fk_R', 'shin_ik_R', 'rot')
             sel_act_bones('foot_fk_R', 'foot_ik_R', 'rot')
@@ -10365,7 +10365,7 @@ class Operator_Leg_R_Snap_IK_FK(bpy.types.Operator):
                 select_bones = ['thigh_fk_R', 'shin_fk_R', 'foot_fk_R', 'toe_1_fk_R', 'toe_2_fk_R']
                 if (b.name in select_bones):
                     b.bone.select = 1
-            arm_data.layers[30] = False
+            arm_data.collections[30].is_visible = False
 
         #Quadruped
         if arm_data['rig_type'] == 'Quadruped':
@@ -10382,7 +10382,7 @@ class Operator_Leg_R_Snap_IK_FK(bpy.types.Operator):
                 if (b.name in check_bones):
                     b.bone.hide = False
 
-            arm_data.layers[30] = True
+            arm_data.collections[30].is_visible = True
             sel_act_bones('thigh_fk_R', 'thigh_ik_R', 'rot')
             sel_act_bones('shin_fk_R', 'shin_ik_R', 'rot')
             sel_act_bones('tarsal_fk_R', 'tarsal_ik_R', 'rot')
@@ -10395,7 +10395,7 @@ class Operator_Leg_R_Snap_IK_FK(bpy.types.Operator):
                 select_bones = ['thigh_fk_R', 'shin_fk_R', 'tarsal_fk_R', 'foot_fk_R', 'toe_1_fk_R', 'toe_2_fk_R']
                 if (b.name in select_bones):
                     b.bone.select = 1
-            arm_data.layers[30] = False
+            arm_data.collections[30].is_visible = False
 
         return {"FINISHED"}
 
@@ -10440,7 +10440,7 @@ class Operator_Leg_R_Snap_FK_IK(bpy.types.Operator):
                 if (b.name in check_bones):
                     b.bone.hide = False
 
-            arm_data.layers[30] = True
+            arm_data.collections[30].is_visible = True
             p_bones['sole_pivot_point_R'].bone.select = 1
             bpy.ops.pose.rot_clear()
             bpy.ops.pose.loc_clear()
@@ -10468,7 +10468,7 @@ class Operator_Leg_R_Snap_FK_IK(bpy.types.Operator):
                 select_bones = ['sole_ctrl_R', 'knee_pole_R', 'toes_ik_ctrl_R', 'toes_ik_ctrl_mid_R', 'foot_ik_ctrl_R']
                 if (b.name in select_bones):
                     b.bone.select = 1
-            arm_data.layers[30] = False
+            arm_data.collections[30].is_visible = False
 
         #Quadruped
         if arm_data['rig_type'] == 'Quadruped':
@@ -10485,7 +10485,7 @@ class Operator_Leg_R_Snap_FK_IK(bpy.types.Operator):
                 if (b.name in check_bones):
                     b.bone.hide = False
 
-            arm_data.layers[30] = True
+            arm_data.collections[30].is_visible = True
             p_bones['sole_pivot_point_R'].bone.select = 1
             bpy.ops.pose.rot_clear()
             bpy.ops.pose.loc_clear()
@@ -10514,7 +10514,7 @@ class Operator_Leg_R_Snap_FK_IK(bpy.types.Operator):
                 select_bones = ['sole_ctrl_R', 'knee_pole_R', 'toes_ik_ctrl_R', 'toes_ik_ctrl_mid_R', 'foot_ik_ctrl_R']
                 if (b.name in select_bones):
                     b.bone.select = 1
-            arm_data.layers[30] = False
+            arm_data.collections[30].is_visible = False
 
         return {"FINISHED"}
 

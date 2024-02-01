@@ -77,7 +77,7 @@ class BLENRIG_PT_visual_assistant(bpy.types.Panel):
         BlenRigPanelOptions = context.window_manager.BlenRigPanelSettings
         if not BlenRigPanelOptions.displayContext == 'RIGTOOLS':
             return False
-        if not context.active_object.data.layers[27]:
+        if not context.active_object.data.collections[27].is_visible:
             return False
         if not context.mode in ['OBJECT','EDIT_ARMATURE']:
             return True

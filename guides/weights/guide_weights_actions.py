@@ -131,7 +131,7 @@ bone_list, layers_list, active_bone_list, wp_active_group_list, mode):
     #Turn On Deformation Layer
     on_layers = layers_list
     for l in on_layers:
-        bpy.context.object.data.layers[l] = True
+        bpy.context.object.data.collections[l].is_visible = True
 
     #Clear Bone List
     scn.blenrig_wp_bones.clear()
@@ -840,7 +840,7 @@ def weights_end_generic(context):
     #Turn Layers off
     off_layers = [24, 25, 26, 27, 28, 29, 30, 31]
     for l in off_layers:
-        guide_props.arm_obj.data.layers[l] = False
+        guide_props.arm_obj.data.collections[l].is_visible = False
 
     #Turn Off Wire in Weight Paint Object
     if guide_props.active_wp_obj != None:

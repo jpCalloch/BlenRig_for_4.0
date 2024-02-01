@@ -431,8 +431,8 @@ def switch_out_local_view():
             if space.local_view: #check if using local view
                 for region in area.regions:
                     if region.type == 'WINDOW':
-                        override = {'area': area, 'region': region} #override context
-                        bpy.ops.view3d.localview(override) #switch to global view
+                        with bpy.context.temp_override(area=area, region=region):
+                            bpy.ops.view3d.localview() #switch to global view
 
 #### Deselect all objects
 def deselect_all_objects(context):
@@ -2084,7 +2084,7 @@ def show_def_bones_update(self, context):
         on_layers = [27]
         off_layers = []
         for l in on_layers:
-            arm.data.layers[l] = True
+            arm.data.collections[l].is_visible = True
         #Unhide Bones
         for b in pbones:
             if b.bone.layers[27] == True:
@@ -2093,7 +2093,7 @@ def show_def_bones_update(self, context):
         #Turn Layers off
         off_layers = [27]
         for l in off_layers:
-            arm.data.layers[l] = False
+            arm.data.collections[l].is_visible = False
         bones = [b.bone for b in scn.blenrig_wp_bones]
         for b in pbones:
             b.bone.hide = True

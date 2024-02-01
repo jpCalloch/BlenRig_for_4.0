@@ -593,9 +593,9 @@ def datatransfer_end_generic(context):
     on_layers = [0, 1, 3, 4, 5, 6, 7, 9, 16, 17, 18, 20, 22, 23]
     off_layers = [24, 25, 26, 27, 28, 29, 30, 31]
     for l in on_layers:
-        context.object.data.layers[l] = True
+        context.object.data.collections[l].is_visible = True
     for l in off_layers:
-        context.object.data.layers[l] = False
+        context.object.data.collections[l].is_visible = False
 
     #Unlink Temp Collection
     blenrig_temp_unlink()

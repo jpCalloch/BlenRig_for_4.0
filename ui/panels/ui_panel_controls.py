@@ -174,7 +174,7 @@ class BLENRIG_PT_blenrig_6_Interface(bpy.types.Panel):
                         for key, value in singleton.armature_layers.items():
                             idx = value[0]
                             if idx < layers_count:
-                                arm_layers.prop(arm, "layers", index=idx, toggle=True, text=key)
+                                arm_layers.prop(arm.collections[idx], "is_visible", index=idx, toggle=True, text=key)
 
 
                     # sin json pero desordenados por no tener el index en el mismo orden:

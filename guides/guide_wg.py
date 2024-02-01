@@ -292,13 +292,15 @@ class BLENRIG_WG_guide(BlenrigGuideFunctions):
                         break
             execution_context = 'INVOKE_DEFAULT'
             undo = False
-            args = (override_context, execution_context, undo)
+            args = (execution_context, undo)
             kwargs = {
                 'guide_id' : self.guide_id,
                 'step' : self.step
             }
-            bpy.ops.blenrig_guide.safe_load_step_images(*args, **kwargs)
-            bpy.ops.blenrig_guide.safe_call_step_action(*args, **kwargs)
+
+            with bpy.context.temp_override(**override_context):
+                bpy.ops.blenrig_guide.safe_load_step_images(*args, **kwargs)
+                bpy.ops.blenrig_guide.safe_call_step_action(*args, **kwargs)
         else:
             self.load_step_imagen(context, step_data['imagen'])
             step_data['accion'](self, context)

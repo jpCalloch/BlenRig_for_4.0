@@ -711,10 +711,10 @@ def reproportion_toggle(context):
                     contador = 0
                     for layer in bpy.context.active_object.data.layers:
                         if layer:
-                            bpy.context.active_object.data.layers[contador] = not bpy.context.active_object.data.layers[contador]
+                            bpy.context.active_object.data.collections[contador] = not bpy.context.active_object.data.collections[contador].is_visible
                         
                         contador += 1
-                        bpy.context.active_object.data.layers[31] = True
+                        bpy.context.active_object.data.collections[31].is_visible = True
 
 
                     for b in p_bones:      
@@ -728,7 +728,7 @@ def reproportion_toggle(context):
                     contador = 0 
                     try :
                         for layer in bpy.context.active_object.data.layers:
-                            bpy.context.active_object.data.layers[contador] = listaDeEstados[contador]
+                            bpy.context.active_object.data.collections[contador] = listaDeEstados[contador].is_visible
                             contador += 1
                     
                         for b in p_bones:

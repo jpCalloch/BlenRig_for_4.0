@@ -3261,7 +3261,7 @@ class ARMATURE_OT_blenrig_6_gui(bpy.types.Operator):
         # Auto mode for gui_rig_bake Toggle:
         # if self.properties.tab == 'gui_rig_bake':
             # self.mode.append(context.active_object.mode)
-            # self.layers.append(bpy.context.active_object.data.layers[:])
+            # self.layers.append(bpy.context.active_object.data.collections[:].is_visible)
             # if context.active_object.mode == 'POSE':
             #     if len(self.mode) > 1:
             #         bpy.ops.object.mode_set(mode= self.mode[-2])

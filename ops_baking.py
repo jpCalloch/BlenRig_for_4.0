@@ -476,8 +476,8 @@ class ARMATURE_OT_armature_baker_all_part_1(bpy.types.Operator):
         bpy.ops.object.mode_set(mode='EDIT')
         bpy.ops.blenrig.fix_misaligned_bones()
         bpy.ops.blenrig.auto_bone_roll()
-        context.object.data.layers[29] = True
-        context.object.data.layers[31] = False
+        context.object.data.collections[29].is_visible = True
+        context.object.data.collections[31].is_visible = False
         context.object.data.show_axes = True
         context.scene.cursor.location = [0,0,0]
 
@@ -504,8 +504,8 @@ class ARMATURE_OT_armature_baker_all_part_2(bpy.types.Operator):
         bpy.ops.blenrig.custom_bone_roll()
         bpy.ops.blenrig.store_roll_angles()
         context.object.data.show_axes = False
-        context.object.data.layers[29] = False
-        context.object.data.layers[31] = True
+        context.object.data.collections[29].is_visible = False
+        context.object.data.collections[31].is_visible = True
         bpy.ops.object.mode_set(mode='POSE')
         bpy.ops.blenrig.reset_constraints()
         context.object.data.pose_position = 'REST'
