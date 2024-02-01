@@ -969,11 +969,11 @@ def Reprop_Edit_Face(operator, context):
     hide_all_bones(context)
 
     #Turn Layers off
-    on_layers = [27]
-    off_layers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,15 ,16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 28, 29, 30, 31]
-    for l in on_layers:
+    on_collections = [27]
+    off_collections = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,15 ,16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 28, 29, 30, 31]
+    for l in on_collections:
         context.object.data.collections[l].is_visible = True
-    for l in off_layers:
+    for l in off_collections:
         context.object.data.collections[l].is_visible = False
 
     # Set Armature to Bbone Display
@@ -2106,11 +2106,11 @@ def Reprop_Bake(operator, context):
     frame_bones(context, "head_str", "master")
 
     #Turn Layers on
-    on_layers = [31]
-    for L in on_layers:
+    on_collections = [31]
+    for L in on_collections:
         context.object.data.collections[L].is_visible = True
-        for l in range(len(context.object.data.layers)):
-            if l not in on_layers:
+        for l in range(len(context.object.data.collections)):
+            if l not in on_collections:
                 context.object.data.collections[l].is_visible = False
 
     unhide_all_bones(context)
@@ -2160,11 +2160,11 @@ def Reprop_Custom_Alignments(operator, context):
     context.scene.tool_settings.transform_pivot_point = 'INDIVIDUAL_ORIGINS'
 
     #Turn Layers on
-    on_layers = [29]
-    for L in on_layers:
+    on_collections = [29]
+    for L in on_collections:
         context.object.data.collections[L].is_visible = True
-        for l in range(len(context.object.data.layers)):
-            if l not in on_layers:
+        for l in range(len(context.object.data.collections)):
+            if l not in on_collections:
                 context.object.data.collections[l].is_visible = False
 
 def Reprop_IK_Check(operator, context):
@@ -2184,11 +2184,11 @@ def Reprop_IK_Check(operator, context):
     frame_bones(context, 'head_str', 'master')
 
     #Turn Layers on
-    on_layers = [6, 7, 9, 16, 23, 27]
-    for L in on_layers:
+    on_collections = [6, 7, 9, 16, 23, 27]
+    for L in on_collections:
         context.object.data.collections[L].is_visible = True
-        for l in range(len(context.object.data.layers)):
-            if l not in on_layers:
+        for l in range(len(context.object.data.collections)):
+            if l not in on_collections:
                 context.object.data.collections[l].is_visible = False
     #
     bones = ('hand_ik_ctrl_L', 'hand_ik_ctrl_R', 'master_torso', 'sole_ctrl_L', 'sole_ctrl_R',
@@ -2224,11 +2224,11 @@ def Reprop_Finish(operator, context):
     reproportion_off(context)
 
     #Turn Layers on
-    on_layers = [0, 1, 3, 4, 5, 6, 7, 9, 16, 17, 18, 20, 22, 23]
-    for L in on_layers:
+    on_collections = [0, 1, 3, 4, 5, 6, 7, 9, 16, 17, 18, 20, 22, 23]
+    for L in on_collections:
         context.object.data.collections[L].is_visible = True
-        for l in range(len(context.object.data.layers)):
-            if l not in on_layers:
+        for l in range(len(context.object.data.collections)):
+            if l not in on_collections:
                 context.object.data.collections[l].is_visible = False
 
 
@@ -2271,11 +2271,11 @@ def reproportion_end_generic(context):
             b.bone.hide_select = False
 
     #Turn Layers off
-    on_layers = [0, 1, 3, 4, 5, 6, 7, 9, 16, 17, 18, 20, 22, 23]
-    off_layers = [24, 25, 26, 27, 28, 29, 30, 31]
-    for l in on_layers:
+    on_collections = [0, 1, 3, 4, 5, 6, 7, 9, 16, 17, 18, 20, 22, 23]
+    off_collections = [24, 25, 26, 27, 28, 29, 30, 31]
+    for l in on_collections:
         context.object.data.collections[l].is_visible = True
-    for l in off_layers:
+    for l in off_collections:
         context.object.data.collections[l].is_visible = False
 
     # Turn On Lattice Modifiers

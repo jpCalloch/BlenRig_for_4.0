@@ -240,22 +240,38 @@ def hide_selected_edit_bones(context):
 
 ###########
 
+def create_override_context_3d_view():
+    for area in bpy.context.screen.areas:
+        if area.type == 'VIEW_3D':
+            override = bpy.context.copy()
+            override["area"] = area
+            break
+    return override
+
 def set_viewpoint(viewpoint='RIGHT'):
-    bpy.ops.view3d.view_axis(type=viewpoint)
+    override_context = create_override_context_3d_view()
+    with bpy.context.temp_override(**override_context):
+        #TODO still have RuntimeError: Operator bpy.ops.view3d.view_axis.poll() failed, context is incorrect
+        #TODO when entering in the 5-Weight Painting Guide ???
+        bpy.ops.view3d.view_axis(type=viewpoint)
 
 def orbit_viewpoint(value, direction='ORBITLEFT'):
-     bpy.ops.view3d.view_orbit(angle=value, type=direction)
+    override_context = create_override_context_3d_view()
+    with bpy.context.temp_override(**override_context):
+        bpy.ops.view3d.view_orbit(angle=value, type=direction)
 
 def set_view_perspective(context, enable: bool):
-    if not context:
-        context = bpy.context
-    if enable and not context.space_data.region_3d.is_perspective:
-        bpy.ops.view3d.view_persportho()
-    elif not enable and context.space_data.region_3d.is_perspective:
-        bpy.ops.view3d.view_persportho()
+    override_context = create_override_context_3d_view()
+    with bpy.context.temp_override(**override_context):
+        if enable and not bpy.context.space_data.region_3d.is_perspective:
+            bpy.ops.view3d.view_persportho()
+        elif not enable and bpy.context.space_data.region_3d.is_perspective:
+            bpy.ops.view3d.view_persportho()
 
 def frame_selected():
-    bpy.ops.view3d.view_selected(use_all_regions=False)
+    override_context = create_override_context_3d_view()
+    with bpy.context.temp_override(**override_context):
+        bpy.ops.view3d.view_selected(use_all_regions=False)
 
 def frame_points(*points):
     return
