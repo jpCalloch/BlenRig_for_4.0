@@ -99,18 +99,27 @@ def biped_update_1005_locks(self, context):
 
 def biped_update_1005_bone_layers(self, context):
     # Generic layer assigner
-    def set_layers(N, L):
-        pbones = bpy.context.active_object.pose.bones
+    def set_collections(self, context, N, collections_index_list):
+
+        pbones = context.active_object.pose.bones
+        arm = context.active_object.data
+
         for b in pbones:
-            layers =  L
-            if b.name == N: 
-                b.bone.layers = [(x in layers) for x in range(32)]
+            if b.name == N:
+                for x in range(32):
+                    if x in collections_index_list:
+                        arm.collections[x].assign(b.bone)
+                    else:
+                        try:
+                            arm.collections[x].unassign(b.bone)
+                        except:
+                            pass
 
     # Changes
-    set_layers('lattice_eye_R', [7, 25, 26])     
-    set_layers('lattice_eye_L', [7, 25, 26])    
-    set_layers('mouth_mstr_low', [5, 25, 28])    
-    set_layers('mouth_mstr_up', [5, 25, 28])            
+    set_collections('lattice_eye_R', [7, 25, 26])     
+    set_collections('lattice_eye_L', [7, 25, 26])    
+    set_collections('mouth_mstr_low', [5, 25, 28])    
+    set_collections('mouth_mstr_up', [5, 25, 28])            
 
 #### Bone Groups ####      
 

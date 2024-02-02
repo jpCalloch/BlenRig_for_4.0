@@ -416,7 +416,7 @@ def rig_toggles(context, call_from: str, call_from_side: str):
 
         pack_bones_2 = [p_bones[finger_name+call_from_side] for finger_name in target_bones["HUMANOID"][target_key]]
 
-        def set_bone_layers(bone_list, layer_list, constraints_state, side):
+        def set_bone_layers(bone_list, collections_index_list, constraints_state, side):
 
             for bl in bone_list:
                 for b in pack_bones_2:
@@ -424,8 +424,9 @@ def rig_toggles(context, call_from: str, call_from_side: str):
                     if b.name != str(bl + side):
                         continue
 
-                    b.bone.layers = [i in layer_list for i in range(len(b.bone.layers))]
-
+                    for col_index in collections_index_list:
+                        arm.collections[col_index].assign(b.bone)
+                    
                     for const in b.constraints:
                         if 'REPROP' in const.name:
                             const.mute = not arm.reproportion
@@ -623,17 +624,20 @@ def fingers_toggles(self, context):
                                     'fing_lit_3_ik_L', 'fing_lit_4_ik_L', 'fing_lit_shp_at_L', 'fing_lit_1_L',
                                     'fing_lit_2_rot_L', 'fing_lit_ctrl_shp_at_L', 'fing_lit_ctrl_bend_loc_L']
 
-                def set_bone_layers(bone_list, layer_list, constraints_state, side):
+                def set_bone_layers(bone_list, collection_index_list, constraints_state, side):
                     bones = bone_list
-                    layers = layer_list
                     for B in bones:
                         for b in p_bones:
                             if b.name == str(B[0:-2] + side):
-                                for L in layers:
-                                    b.bone.layers[L] = 1
-                                    for l in range(len(b.bone.layers)):
-                                        if l not in layers:
-                                            b.bone.layers[l] = 0
+                                for L in collection_index_list:
+                                    arm.collections[L].assign(b.bone)
+                                    for l in range(len(arm.collections)):
+                                        if l not in collection_index_list:
+                                            try:
+                                                arm.collections[l].unassign(b.bone)
+                                            except:
+                                                pass
+                                                
                                 if constraints_state == 'On':
                                     for C in b.constraints:
                                         C.mute = False
@@ -883,7 +887,7 @@ def toes_toggles(self, context, call_from: str, call_from_side: str):
         # pack_bones_2 = [p_bones[finger_name+call_from_side] for finger_name in target_bones["HUMANOID"][target_key]]
         # print(pack_bones_2)
 
-        def set_bone_layers(bone_list, layer_list, constraints_state, side):
+        def set_bone_layers(bone_list, collections_index_list, constraints_state, side):
 
             for bl in bone_list:
                 for b in p_bones:
@@ -895,7 +899,8 @@ def toes_toggles(self, context, call_from: str, call_from_side: str):
                     if "toes_spread" in bl:
                         print(b.name, bl + side)
 
-                    b.bone.layers = [i in layer_list for i in range(len(b.bone.layers))]
+                    for col_index in collections_index_list:
+                        arm.collections[col_index].assign(b.bone)
 
                     for const in b.constraints:
                         if 'REPROP' in const.name:
@@ -1572,30 +1577,30 @@ def pole_toggles(context):
                         if prop_pole == 1:
                             for bone in arm.bones:
                                 if bone.name == 'elbow_pole_L':
-                                    bone.layers[16] = 1
+                                    arm.collections[16].assign(bone)
                                 if bone.name == 'elbow_line_L':
-                                    bone.layers[16] = 1
+                                    arm.collections[16].assign(bone)
                         else:
                             for bone in arm.bones:
                                 if bone.name == 'elbow_pole_L':
-                                    bone.layers[16] = 0
+                                    arm.collections[16].unassign(bone)
                                 if bone.name == 'elbow_line_L':
-                                    bone.layers[16] = 0
+                                    arm.collections[16].unassign(bone)
                     # Arm Pole R
                     if b.name == 'properties_arm_R':
                         prop_pole = int(b.toggle_arm_ik_pole_R)
                         if prop_pole == 1:
                             for bone in arm.bones:
                                 if bone.name == 'elbow_pole_R':
-                                    bone.layers[6] = 1
+                                    arm.collections[6].assign(bone)
                                 if bone.name == 'elbow_line_R':
-                                    bone.layers[6] = 1
+                                    arm.collections[6].assign(bone)
                         else:
                             for bone in arm.bones:
                                 if bone.name == 'elbow_pole_R':
-                                    bone.layers[6] = 0
+                                    arm.collections[6].unassign(bone)
                                 if bone.name == 'elbow_line_R':
-                                    bone.layers[6] = 0
+                                    arm.collections[6].unassign(bone)
 
                     # Leg Pole L
                     if b.name == 'properties_leg_L':
@@ -1603,15 +1608,15 @@ def pole_toggles(context):
                         if prop_pole == 1:
                             for bone in arm.bones:
                                 if bone.name == 'knee_pole_L':
-                                    bone.layers[9] = 1
+                                    arm.collections[9].assign(bone)
                                 if bone.name == 'knee_line_L':
-                                    bone.layers[9] = 1
+                                    arm.collections[9].assign(bone)
                         else:
                             for bone in arm.bones:
                                 if bone.name == 'knee_pole_L':
-                                    bone.layers[9] = 0
+                                    arm.collections[9].unassign(bone)
                                 if bone.name == 'knee_line_L':
-                                    bone.layers[9] = 0
+                                    arm.collections[9].unassign(bone)
 
                     # Leg Pole R
                     if b.name == 'properties_leg_R':
@@ -1619,15 +1624,15 @@ def pole_toggles(context):
                         if prop_pole == 1:
                             for bone in arm.bones:
                                 if bone.name == 'knee_pole_R':
-                                    bone.layers[23] = 1
+                                    arm.collections[23].assign(bone)
                                 if bone.name == 'knee_line_R':
-                                    bone.layers[23] = 1
+                                    arm.collections[23].assign(bone)
                         else:
                             for bone in arm.bones:
                                 if bone.name == 'knee_pole_R':
-                                    bone.layers[23] = 0
+                                    arm.collections[23].unassign(bone)
                                 if bone.name == 'knee_line_R':
-                                    bone.layers[23] = 0
+                                    arm.collections[23].unassign(bone)
 
 #################################### BLENRIG SET CONSTRAINTS VALUES FUNCTIONS ####################################################
 

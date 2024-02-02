@@ -219,7 +219,7 @@ def hide_bones_in_layer(context, *layer_numbers, state=True):
     pbones = context.pose_object.pose.bones
     for layer in layer_numbers:
         for b in pbones:
-            if b.bone.layers[layer] == True:
+            if b.bone.collections[layer].is_visible == True:
                 if state == True:
                     b.bone.hide = True
                 if state == False:
